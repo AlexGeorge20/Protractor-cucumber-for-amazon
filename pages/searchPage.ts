@@ -1,6 +1,5 @@
 import { $, ElementFinder } from "protractor";
 import {  element, by } from "protractor";
-import { threadId } from "worker_threads";
 
 export class SearchPageObject {
     public pincode: ElementFinder;
@@ -12,22 +11,20 @@ export class SearchPageObject {
     public clickcontinue: ElementFinder;
     public inputpwd:ElementFinder;
     public signinbtn:ElementFinder;
-public searchbox:ElementFinder;
-public submitSearch:ElementFinder;
-public pagecount:ElementFinder;
-
-public nextbtn:ElementFinder;
-public firstiteminpg:ElementFinder;
-
-public addtocart:ElementFinder;
-public productTitle:ElementFinder;
-public sidesheetclosebtn:ElementFinder;
-public cartCount:ElementFinder;
-public cartPage:ElementFinder;
-public itemNameincart:ElementFinder;
-public    deleteProduct: ElementFinder;
-public activeItem: ElementFinder;
-    delbtn: ElementFinder;
+    public searchbox:ElementFinder;
+    public submitSearch:ElementFinder;
+    public pagecount:ElementFinder;
+    public nextbtn:ElementFinder;
+    public firstiteminpg:ElementFinder;
+    public addtocart:ElementFinder;
+    public productTitle:ElementFinder;
+    public sidesheetclosebtn:ElementFinder;
+    public cartCount:ElementFinder;
+    public cartPage:ElementFinder;
+    public itemNameincart:ElementFinder;
+    public deleteProduct: ElementFinder;
+    public activeItem: ElementFinder;
+    public delbtn: ElementFinder;
 
 
     constructor() {
@@ -49,11 +46,13 @@ public activeItem: ElementFinder;
         this.productTitle=element(by.id("productTitle"))
         // this.sidesheetclosebtn=element(by.css("div[class='a-section a-spacing-none a-padding-base attach-primary-atc-confirm-box']")).element(by.id("attach-close_sideSheet-link"))
         this.sidesheetclosebtn=element(by.id("attach-close_sideSheet-link"))
-
         this.cartCount=element(by.id("nav-cart-count-container")).element(by.id("nav-cart-count"))
         this.cartPage=element(by.id("nav-cart"))
         this.itemNameincart=element(by.css("div[data-item-index='1']")).element(by.css("li:nth-child(1)")).element(by.css("span[class='a-truncate a-size-medium']")).element(by.css("span[class='a-truncate-full a-offscreen']"))
         this.activeItem=element(by.css("div[data-name='Active Items']"))
         this.delbtn=element(by.css("input[data-action='delete']"))
     }
+
+
+
 }
