@@ -47,8 +47,5 @@
     "ts-node": "^8.0.2",
     "typescript": "^3.0.1"
   },
-  "repository": "https://github.com/igniteram/protractor-cucumber-typescript",
-  "dependencies": {
-    "yargs": "^17.5.1"
-  }
+  "repository": "https://github.com/igniteram/protractor-cucumber-typescript"
 }
