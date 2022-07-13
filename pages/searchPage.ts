@@ -30,12 +30,17 @@ export class SearchPageObject {
     public delbtn: ElementFinder;
     public japan: ElementFinder;
     public lowtohigh: ElementFinder;
-    sortby: ElementFinder;
-    sortedText: ElementFinder;
-    hightolow: ElementFinder;
-    avgreview: ElementFinder;
-    newArrival: ElementFinder;
-    applebrand: ElementFinder;
+    public sortby: ElementFinder;
+    public sortedText: ElementFinder;
+    public hightolow: ElementFinder;
+    public avgreview: ElementFinder;
+    public newArrival: ElementFinder;
+    public applebrand: ElementFinder;
+    public minbox: ElementFinder;
+    public gobtn: ElementFinder;
+    public priceofitem1: ElementFinder;
+     public starRating: ElementFinder;
+     public starRatingI: string;
 
 
     constructor() {
@@ -73,6 +78,11 @@ export class SearchPageObject {
     this.avgreview=element(by.css("div[class='a-popover-wrapper']")).element(by.id("s-result-sort-select_3"))
     this.newArrival=element(by.css("div[class='a-popover-wrapper']")).element(by.id("s-result-sort-select_4"))
 this.applebrand=element(by.css("div[id='brandsRefinements']")).element(by.id("p_89/Apple")).element(by.css("div[class='a-checkbox a-checkbox-fancy s-navigation-checkbox aok-float-left']"))
+this.minbox=element(by.xpath("//*[@id='low-price']"))
+this.gobtn=element(by.xpath("//*[@id='a-autoid-1']/span/input"))
+this.priceofitem1= element(by.xpath("//*[@id='search']/div[1]/div[1]/div/span[3]/div[2]/div[3]/div/div/div/div/div/div[2]/div/div/div[3]/div[1]/div/div[1]/div/a/span/span[2]/span[2]"))
+this.starRating = element(by.className('a-icon a-icon-star-medium a-star-medium-4'))
+this.starRatingI ='i[class="a-icon a-icon-star-medium a-star-medium-4"]';
 }
 
     present = async (toCheck: ElementFinder, checkvisiblity: boolean = true): Promise<void> => {
