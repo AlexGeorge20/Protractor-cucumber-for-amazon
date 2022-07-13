@@ -126,6 +126,9 @@ Then(/^Check all are Apple products$/, { timeout: 2 * 105000000 }, async () => {
     
 })
 Then(/^Check if customer review is 4 star and up$/, { timeout: 2 * 105000000 }, async () => {
+    await element(by.xpath("//*[@id='p_72/1318476031']/span/a/section")).click()
+  
+  
     // await search.scroll(element(by.css("section[aria-label='4 Stars & Up']")))
    
 //    await element(by.id("p_72/1318476031")).click()
@@ -140,25 +143,37 @@ Then(/^Check if customer review is 4 star and up$/, { timeout: 2 * 105000000 }, 
 // await element(by.css("div[id='reviewsRefinements']")).element(by.id("p_72/1318476031")).element(by.css("i[class='a-icon a-icon-star-medium a-star-medium-4']")).click()
 
 //await element(by.css("div[id='reviewsRefinements']")).element(by.id("p_72/1318476031")).element(by.css("a[href='/s?k=apple&dc&crid=B46J9A88ZVC9&qid=1657675234&rnid=1318475031&sprefix=appl%2Caps%2C268&ref=sr_nr_p_72_1&ds=v1%3APZNjg3iCh1pRAu%2FolazhwyG5IwYQiJ%2FOqjkz1I56Z4c']")).click()
-await search.present(element(by.xpath("//*[@id='p_72/1318476031']")).element(by.css("section[aria-label='4 Stars & Up']")))
-await browser.executeScript('arguments[0].click()', element(by.xpath("//*[@id='p_72/1318476031']")).element(by.css("section[aria-label='4 Stars & Up']")));
-
-let word=await element(by.xpath("//*[@id='p_72/1318476031']")).element(by.css("section[aria-label='4 Stars & Up']")).getAttribute('innerText')
+// await search.present(element(by.xpath("//*[@id='p_72/1318476031']")).element(by.css("section[aria-label='4 Stars & Up']")))
+// await browser.executeScript('arguments[0].click()', element(by.xpath("//*[@id='p_72/1318476031']")).element(by.css("section[aria-label='4 Stars & Up']")));
+// let word=await element(by.xpath("//*[@id='p_72/1318476031']")).element(by.css("section[aria-label='4 Stars & Up']")).getAttribute('innerText')
 
 // await element(by.xpath('//*[@id="p_72/1318476031"]/span/a')).click()
 // let word=await element(by.xpath('//*[@id="p_72/1318476031"]/span/a/section/i/span')).getText()
 // let word= await element(by.css("div[id='reviewsRefinements']")).element(by.id("p_72/1318476031")).element(by.css("i[class='a-icon a-icon-star-medium a-star-medium-4']")).getAttribute('innerText')
     // let word= await element(by.id("p_72/1318476031")).element(by.css("i[class='a-icon a-icon-star-medium a-star-medium-4']")).getAttribute('innerText')
 
-    console.log("4 & UPclicked",word);
+    console.log("4 & UPclicked");
         browser.sleep(5000)
         console.log("CLICKED PAGE");
         
-
 })
-Then(/^Enter {int} as minimum$/, { timeout: 2 * 105000000 }, async (intmin:number) => {
-    console.log("NUM",intmin);
-    
+Then(/^Enter "(.*?)" as minimum$/, { timeout: 2 * 105000000 }, async (MinAmt:number) => {
+    console.log("Amt", MinAmt);
+    await search.present(element(by.xpath("//*[@id='low-price']")))
+    await search.scroll(element(by.xpath("//*[@id='low-price']")))
+    await element(by.xpath("//*[@id='low-price']")).sendKeys(MinAmt)
+    await browser.sleep(2000)
+    await(element(by.xpath("//*[@id='a-autoid-1']/span/input"))).click()
+    await browser.sleep(2000)
+    let lowtoHighname= await sortbyclick(search.lowtohigh)
+   console.log("L2H", lowtoHighname);
+   await browser.sleep(2000)
+    let price=await element(by.xpath("//*[@id='search']/div[1]/div[1]/div/span[3]/div[2]/div[3]/div/div/div/div/div/div[2]/div/div/div[3]/div[1]/div/div[1]/div/a/span/span[2]/span[2]")).getText()
+    let stringWithoutComma = parseInt(price.replace(/,/g,''),10) 
+    console.log("Price of item1", stringWithoutComma);
+    expect(stringWithoutComma).to.be.greaterThan(999)
+    await browser.sleep(2000)
+
 })
 
 
