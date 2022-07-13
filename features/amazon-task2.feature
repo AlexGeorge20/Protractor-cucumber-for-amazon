@@ -1,12 +1,11 @@
 Feature: To search product in amazon.in Cucumber
 
 # @CucumberScenario
-Scenario: Cucumber Amazon-task2 
-Given googleHome page
-            # Given I am on "amazon" search page
-            # When I click on Japan
-            # When Enter "apple" in searchbar 
-            # Then Click on sortby button
+# Scenario: Cucumber Amazon-task2 
+#             Given I am on "amazon" search page
+#             When I click on Japan
+#             When Enter "apple" in searchbar 
+#             Then Click on sortby button
             
 # @CucumberScenario
 # Scenario: Cucumber select apple brand          
@@ -21,8 +20,8 @@ Given googleHome page
 #      When Enter "apple" in searchbar
 #      Then Check if customer review is 4 star and up
 
-#  @CucumberScenario
-# Scenario: Min price as 1000        
-#      Given I am on "amazon" search page
-#      When Enter "apple" in searchbar
-#      Then Enter "1000" as minimum
+ @CucumberScenario
+Scenario: Min price as 1000        
+     Given I am on "amazon" search page
+     When Enter "apple" in searchbar
+    #  Then Enter "1000" as minimum

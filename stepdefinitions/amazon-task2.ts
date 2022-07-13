@@ -125,7 +125,7 @@ Then(/^Check all are Apple products$/, { timeout: 2 * 105000000 }, async () => {
 //     browser.sleep(2000)
 //     expect(NAme).to.have.string("Apple")
 //   }
-let checkbxname=await(element(by.css('span[class="a-size-base-plus a-color-base a-text-normal"]')).get(1)).getAttribute('innerText')
+let checkbxname=await(element(by.css('span[class="a-size-base-plus a-color-base a-text-normal"]'))).getAttribute('innerText')
 console.log("chkbxname",checkbxname);
 expect(checkbxname).to.have.string("Apple")
     
@@ -201,23 +201,18 @@ Then(/^Enter "(.*?)" as minimum$/, { timeout: 2 * 105000000 }, async (MinAmt:num
     await browser.sleep(2000)
     await(search.gobtn).click()
     await browser.sleep(2000)
-    let lowtoHighname= await sortbyclick(search.lowtohigh)
-   console.log("L2H", lowtoHighname);
-   await browser.sleep(2000)
-    let price=await search.priceofitem1 .getText()
-    let stringWithoutComma = parseInt(price.replace(/,/g,''),10) 
-    console.log("Price of item1", stringWithoutComma);
-    expect(stringWithoutComma).to.be.greaterThan(999)
-    await browser.sleep(2000)
+//     let lowtoHighname= await sortbyclick(search.lowtohigh)
+//    console.log("L2H", lowtoHighname);
+//    await browser.sleep(2000)
+//     let price=await search.priceofitem1 .getText()
+//     let stringWithoutComma = parseInt(price.replace(/,/g,''),10) 
+//     console.log("Price of item1", stringWithoutComma);
+//     expect(stringWithoutComma).to.be.greaterThan(999)
+//     await browser.sleep(2000)
 
 })
 
-Given('googleHome page',async()=>{
-    await browser.get('google.com');
-    await browser.sleep(5000);
-    console.log('title',await browser.getTitle());
-    
-})
+
 
 
 
