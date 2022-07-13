@@ -27,7 +27,15 @@ export class SearchPageObject {
     public itemNameincart: ElementFinder;
     public deleteProduct: ElementFinder;
     public activeItem: ElementFinder;
-    delbtn: ElementFinder;
+    public delbtn: ElementFinder;
+    public japan: ElementFinder;
+    public lowtohigh: ElementFinder;
+    sortby: ElementFinder;
+    sortedText: ElementFinder;
+    hightolow: ElementFinder;
+    avgreview: ElementFinder;
+    newArrival: ElementFinder;
+    applebrand: ElementFinder;
 
 
     constructor() {
@@ -55,7 +63,17 @@ export class SearchPageObject {
         this.itemNameincart = element(by.css("div[data-item-index='1']")).element(by.css("li:nth-child(1)")).element(by.css("span[class='a-truncate a-size-medium']")).element(by.css("span[class='a-truncate-full a-offscreen']"))
         this.activeItem = element(by.css("div[data-name='Active Items']"))
         this.delbtn = element(by.css("input[data-action='delete']"))
-    }
+        // this.japan=element(by.css("div[class='navFooterLine navFooterLinkLine navFooterPadItemLine']")).element(by.css("a[href='https://www.amazon.co.jp/ref=footer_jp']"))
+        this.japan=element(by.linkText("Japan"))
+
+    this.sortby=element(by.css("span[class='a-button-inner']"))
+    this.lowtohigh=element(by.css("div[class='a-popover-wrapper']")).element(by.id("s-result-sort-select_1"))
+    this.sortedText=element(by.css("span[class='a-button-inner']")).element(by.css("span[class='a-dropdown-prompt']"))
+    this.hightolow=element(by.css("div[class='a-popover-wrapper']")).element(by.id("s-result-sort-select_2"))
+    this.avgreview=element(by.css("div[class='a-popover-wrapper']")).element(by.id("s-result-sort-select_3"))
+    this.newArrival=element(by.css("div[class='a-popover-wrapper']")).element(by.id("s-result-sort-select_4"))
+this.applebrand=element(by.css("div[id='brandsRefinements']")).element(by.id("p_89/Apple")).element(by.css("div[class='a-checkbox a-checkbox-fancy s-navigation-checkbox aok-float-left']"))
+}
 
     present = async (toCheck: ElementFinder, checkvisiblity: boolean = true): Promise<void> => {
         if (checkvisiblity) {

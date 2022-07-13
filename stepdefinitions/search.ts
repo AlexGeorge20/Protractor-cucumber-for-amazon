@@ -11,11 +11,11 @@ const search: SearchPageObject = new SearchPageObject();
 let pdtitle: string;
 
 
-When("I click on pincode", { timeout: 2 * 5000 }, async () => {
+When("I click on pincode", { timeout: 2 * 105000 }, async () => {
   await search.pincode.click();
   await browser.sleep(2000)
 });
-Then(/^I entered pin "(.*?)"$/, { timeout: 3 * 5000 }, async (pin: string) => {
+Then(/^I entered pin "(.*?)"$/, { timeout: 3 * 105000 }, async (pin: string) => {
 
   await search.present(search.searchPin)
   await search.searchPin.sendKeys(pin);
@@ -43,7 +43,7 @@ Then(/^I entered pin "(.*?)"$/, { timeout: 3 * 5000 }, async (pin: string) => {
   // expect(code.trim()).to.have.string(pin.trim());
 
 });
-When('I click on signIn to enter email {string} and password {string}', { timeout: 2 * 5000 }, async (email: string, pwd: string) => {
+When('I click on signIn to enter email {string} and password {string}', { timeout: 2 * 105000 }, async (email: string, pwd: string) => {
   // When(/^I click on signIn to enter email "(.*?)" and password "(.*?)"$/, async (email:string,pwd:string) => {
 
   await browser.executeScript(`arguments[0].scrollIntoView();`, search.hellosignin.getWebElement());
@@ -66,7 +66,7 @@ Then(/^I log into my account$/, { timeout: 3 * 150000 }, async () => {
   await browser.sleep(2000);
 
 });
-When(/^I enter "(.*?)" in searchbar$/, { timeout: 2 * 5000 }, async (item: string) => {
+When(/^I enter "(.*?)" in searchbar$/, { timeout: 2 * 105000 }, async (item: string) => {
   await search.present(search.searchbox)
   await search.searchbox.sendKeys(item);
   await browser.executeScript(`arguments[0].scrollIntoView();`, search.submitSearch.getWebElement());
@@ -74,7 +74,7 @@ When(/^I enter "(.*?)" in searchbar$/, { timeout: 2 * 5000 }, async (item: strin
   await browser.sleep(3000);
 })
 
-When(/^Go to fourth page$/, { timeout: 2 * 5000 }, async () => {
+When(/^Go to fourth page$/, { timeout: 2 * 105000 }, async () => {
   let count = await search.pagecount.getText();
   console.log("COUNT", count[0]);
   let counter: number = +count;
@@ -110,7 +110,7 @@ Then(/^Click first item in cart$/, { timeout: 2 * 105000 }, async () => {
 
   await browser.sleep(3000)
 })
-Then(/^Add to cart and check$/, { timeout: 3 * 15000 }, async () => {
+Then(/^Add to cart and check$/, { timeout: 3 * 105000 }, async () => {
 
   await search.present(search.addtocart)
 
