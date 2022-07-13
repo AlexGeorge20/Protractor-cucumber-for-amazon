@@ -24,4 +24,4 @@ Feature: To search product in amazon.in Cucumber
 Scenario: Min price as 1000        
      Given I am on "amazon" search page
      When Enter "apple" in searchbar
-    #  Then Enter "1000" as minimum
+     Then Enter "1000" as minimum

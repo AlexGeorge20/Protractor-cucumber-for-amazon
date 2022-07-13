@@ -198,17 +198,24 @@ Then(/^Enter "(.*?)" as minimum$/, { timeout: 2 * 105000000 }, async (MinAmt:num
     await search.present(search.minbox)
     await search.scroll(search.minbox)
     await search.minbox.sendKeys(MinAmt)
+    await browser.sleep(5000)
+    console.log("Amt", MinAmt);
+    console.log("NOT CLicked");
+    // await search.present(search.gobtn)
+    // await(search.gobtn).click()
+    await browser.executeScript(`document.querySelectorAll('${search.gobtn}')[0].click()`).catch((err: Error) => { throw new Error(`Unable to click: [${search.gobtn}]`); });
+
+    console.log("CLICKED");
+    
+    await browser.sleep(5000)
+    let lowtoHighname= await sortbyclick(search.lowtohigh)
+   console.log("L2H", lowtoHighname);
+   await browser.sleep(2000)
+    let price=await search.priceofitem1 .getText()
+    let stringWithoutComma = parseInt(price.replace(/,/g,''),10) 
+    console.log("Price of item1", stringWithoutComma);
+    expect(stringWithoutComma).to.be.greaterThan(999)
     await browser.sleep(2000)
-    await(search.gobtn).click()
-    await browser.sleep(2000)
-//     let lowtoHighname= await sortbyclick(search.lowtohigh)
-//    console.log("L2H", lowtoHighname);
-//    await browser.sleep(2000)
-//     let price=await search.priceofitem1 .getText()
-//     let stringWithoutComma = parseInt(price.replace(/,/g,''),10) 
-//     console.log("Price of item1", stringWithoutComma);
-//     expect(stringWithoutComma).to.be.greaterThan(999)
-//     await browser.sleep(2000)
 
 })
 
