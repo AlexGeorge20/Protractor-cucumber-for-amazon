@@ -1,4 +1,5 @@
 import { EMLINK } from "constants";
+import { Given } from "cucumber";
 import { browser, element, by, protractor, ElementFinder } from "protractor";
 import { SearchPageObject } from "../pages/searchPage";
 const { When, Then } = require("cucumber");
@@ -59,6 +60,7 @@ When(/^I click on Japan$/, { timeout: 2 * 105000 }, async () => {
     // let sortName1=await search.sortedText.getText()
     //  console.log("SortName",sortName1);
     // expect(sortName1.trim()).to.have.string('Price: Low to High');
+        // expect(sortName1.trim()).to.have.string('Price: Low to High');
     
     console.log("same text");
     await browser.sleep(2000)
@@ -74,9 +76,9 @@ When(/^I click on Japan$/, { timeout: 2 * 105000 }, async () => {
     await browser.sleep(2000)
     console.log("h2L click");
     // await search.present(search.hightolow)
+    // await search.hightolow.click()
 
     await browser.executeScript('arguments[0].click()', search.hightolow);
-    // await search.hightolow.click()
 
     console.log("h2L clicked");
         await browser.sleep(3000)
@@ -123,7 +125,7 @@ Then(/^Check all are Apple products$/, { timeout: 2 * 105000000 }, async () => {
 //     browser.sleep(2000)
 //     expect(NAme).to.have.string("Apple")
 //   }
-let checkbxname=await(element(by.css('span[class="a-size-base-plus a-color-base a-text-normal"]')) ).getAttribute('innerText')
+let checkbxname=await(element(by.css('span[class="a-size-base-plus a-color-base a-text-normal"]')).get(1)).getAttribute('innerText')
 console.log("chkbxname",checkbxname);
 expect(checkbxname).to.have.string("Apple")
     
@@ -208,6 +210,13 @@ Then(/^Enter "(.*?)" as minimum$/, { timeout: 2 * 105000000 }, async (MinAmt:num
     expect(stringWithoutComma).to.be.greaterThan(999)
     await browser.sleep(2000)
 
+})
+
+Given('googleHome page',async()=>{
+    await browser.get('google.com');
+    await browser.sleep(5000);
+    console.log('title',await browser.getTitle());
+    
 })
 
 

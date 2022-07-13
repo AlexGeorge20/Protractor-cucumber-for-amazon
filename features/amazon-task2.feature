@@ -2,10 +2,11 @@ Feature: To search product in amazon.in Cucumber
 
 # @CucumberScenario
 Scenario: Cucumber Amazon-task2 
-            Given I am on "amazon" search page
+Given googleHome page
+            # Given I am on "amazon" search page
             # When I click on Japan
-            When Enter "apple" in searchbar 
-            Then Click on sortby button
+            # When Enter "apple" in searchbar 
+            # Then Click on sortby button
             
 # @CucumberScenario
 # Scenario: Cucumber select apple brand          
