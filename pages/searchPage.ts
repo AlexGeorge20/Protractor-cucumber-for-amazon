@@ -137,6 +137,6 @@ this.gobtn='input[aria-labelledby="a-autoid-1-announce"]'
 } 
      clickAble=async (elemtocheck:ElementFinder):Promise<void>=>{
              var EC = protractor.ExpectedConditions;
-             browser.wait(EC.elementToBeClickable(elemtocheck), 5000);
+             browser.wait(EC.elementToBeClickable(elemtocheck), 10000);
 }
 }
