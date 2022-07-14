@@ -41,6 +41,16 @@ export class SearchPageObject {
     public priceofitem1: ElementFinder;
      public starRating: ElementFinder;
      public starRatingI: string;
+    public careers: ElementFinder;
+    careersearchbox: ElementFinder;
+    careersearchbtn: ElementFinder;
+    sftdevbtn: ElementFinder;
+    egypt: ElementFinder;
+    jobtitleblocks: ElementFinder;
+    openingCount: any;
+    languageBox: ElementFinder;
+    malayalam: ElementFinder;
+    savelanguagebtn: ElementFinder;
 
 
     constructor() {
@@ -88,6 +98,17 @@ this.priceofitem1= element(by.xpath("//*[@id='search']/div[1]/div[1]/div/span[3]
 this.starRating = element(by.className('a-icon a-icon-star-medium a-star-medium-4'))
 this.starRatingI ='i[class="a-icon a-icon-star-medium a-star-medium-4"]';
 this.gobtn='input[aria-labelledby="a-autoid-1-announce"]'
+this.careers=element(by.linkText("Careers"))
+this.careersearchbox=element.all(by.css("input[placeholder='Search for jobs']")).get(1)
+this.careersearchbtn=element(by.id("search-button"))
+this.sftdevbtn=element(by.css("button[data-label='Software Development']"))
+this.egypt=element(by.css("button[data-label='Egypt']"))
+this.jobtitleblocks=element(by.css("div[class='job-tile']"))
+this.openingCount=element.all(by.css("div[class='job-tile']"))
+this.languageBox=element(by.id('icp-touch-link-language'))
+this.malayalam=element(by.xpath("//*[@id='icp-language-settings']/div[7]/div/label/i"))
+this.savelanguagebtn=element(by.css("input[aria-labelledby='icp-save-button-announce']"))
+
 }
 
     present = async (toCheck: ElementFinder, checkvisiblity: boolean = true): Promise<void> => {
@@ -137,6 +158,6 @@ this.gobtn='input[aria-labelledby="a-autoid-1-announce"]'
 } 
      clickAble=async (elemtocheck:ElementFinder):Promise<void>=>{
              var EC = protractor.ExpectedConditions;
-             browser.wait(EC.elementToBeClickable(elemtocheck), 5000);
+             browser.wait(EC.elementToBeClickable(elemtocheck), 10000);
 }
 }

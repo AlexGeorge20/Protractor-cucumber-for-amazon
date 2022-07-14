@@ -7,7 +7,7 @@ const expect = chai.expect;
 const search: SearchPageObject = new SearchPageObject();
 
 Given(/^I am on "(.*?)" search page$/, async (text) => {
-  await browser.get("https://www.amazon.in")
+  await  browser.get("https://www.amazon.in")
     if (text === "amazon") {
      console.log("TITLE", await browser.getTitle());
      await expect(browser.getTitle()).to.eventually.equal("Online Shopping site in India: Shop Online for Mobiles, Books, Watches, Shoes and More - Amazon.in");
