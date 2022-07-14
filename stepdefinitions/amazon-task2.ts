@@ -10,15 +10,15 @@ var assert = require('assert')
 var should = require('chai').should()
 const search: SearchPageObject = new SearchPageObject();
 
-    async function sortbyclick(sortedItem:ElementFinder){
-        await search.sortby.click()
-        console.log("sort by btn clicked");
-        await browser.sleep(3000)
-        await browser.executeScript('arguments[0].click()', sortedItem);
-        let sortName=await search.sortedText.getText()
-        console.log("SortName",sortName);
-        return sortName
-}   
+//     async function sortbyclick(sortedItem:ElementFinder){
+//         await search.sortby.click()
+//         console.log("sort by btn clicked");
+//         await browser.sleep(3000)
+//         await browser.executeScript('arguments[0].click()', sortedItem);
+//         let sortName=await search.sortedText.getText()
+//         console.log("SortName",sortName);
+//         return sortName
+// }   
 
 When(/^I click on Japan$/, { timeout: 2 * 105000 }, async () => {
     await search.scroll(search.japan)
@@ -49,7 +49,7 @@ When(/^I click on Japan$/, { timeout: 2 * 105000 }, async () => {
   })
   Then(/^Click on sortby button$/, { timeout: 3 * 150000 }, async () => {
    
-   let lowtoHighname= await sortbyclick(search.lowtohigh)
+   let lowtoHighname= await search.sortbyclick(search.lowtohigh)
    console.log("L2H", lowtoHighname);
    expect(lowtoHighname).to.have.string('Price: Low to High');
     // await search.sortby.click()
@@ -128,6 +128,8 @@ Then(/^Check all are Apple products$/, { timeout: 2 * 105000000 }, async () => {
 let checkbxname=await(element(by.css('span[class="a-size-base-plus a-color-base a-text-normal"]'))).getAttribute('innerText')
 console.log("chkbxname",checkbxname);
 expect(checkbxname).to.have.string("Apple")
+console.log("Product is of Apple brand");
+
     
 })
 Then(/^Check if customer review is 4 star and up$/, { timeout: 2 * 105000000 }, async () => {
@@ -193,7 +195,7 @@ await browser.sleep(5000)
 
         
 })
-Then(/^Enter "(.*?)" as minimum$/, { timeout: 2 * 105000000 }, async (MinAmt:number) => {
+When(/^Enter "(.*?)" as minimum$/, { timeout: 2 * 105000000 }, async (MinAmt:number) => {
     console.log("Amt", MinAmt);
     await search.present(search.minbox)
     await search.scroll(search.minbox)
@@ -204,14 +206,18 @@ Then(/^Enter "(.*?)" as minimum$/, { timeout: 2 * 105000000 }, async (MinAmt:num
     // await search.present(search.gobtn)
     // await(search.gobtn).click()
     await browser.executeScript(`document.querySelectorAll('${search.gobtn}')[0].click()`).catch((err: Error) => { throw new Error(`Unable to click: [${search.gobtn}]`); });
-
     console.log("CLICKED");
-    
     await browser.sleep(5000)
-    let lowtoHighname= await sortbyclick(search.lowtohigh)
+
+
+
+})
+Then(/^Check if price of product is above 1000$/, { timeout: 2 * 105000000 }, async () => {
+   await search.present(search.sortby)
+    let lowtoHighname= await search.sortbyclick(search.lowtohigh)
    console.log("L2H", lowtoHighname);
    await browser.sleep(2000)
-    let price=await search.priceofitem1 .getText()
+    let price=await search.priceofitem1.getText()
     let stringWithoutComma = parseInt(price.replace(/,/g,''),10) 
     console.log("Price of item1", stringWithoutComma);
     expect(stringWithoutComma).to.be.greaterThan(999)

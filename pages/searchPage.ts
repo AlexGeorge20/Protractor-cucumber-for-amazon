@@ -124,4 +124,15 @@ this.gobtn='input[aria-labelledby="a-autoid-1-announce"]'
         await browser.executeScript(`arguments[0].scrollIntoView();`, eleItem.getWebElement());
 
     }
+    // async function sortbyclick(sortedItem:ElementFinder){
+     sortbyclick=async (sortedItem:ElementFinder):Promise<string>=>{
+
+        await this.sortby.click()
+        console.log("sort by btn clicked");
+        await browser.sleep(3000)
+        await browser.executeScript('arguments[0].click()', sortedItem);
+        let sortName=await this.sortedText.getText()
+        console.log("SortName",sortName);
+        return sortName
+} 
 }
