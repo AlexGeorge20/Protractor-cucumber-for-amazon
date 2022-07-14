@@ -135,4 +135,8 @@ this.gobtn='input[aria-labelledby="a-autoid-1-announce"]'
         console.log("SortName",sortName);
         return sortName
 } 
+     clickAble=async (elemtocheck:ElementFinder):Promise<void>=>{
+             var EC = protractor.ExpectedConditions;
+             browser.wait(EC.elementToBeClickable(elemtocheck), 5000);
+}
 }

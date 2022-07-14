@@ -208,12 +208,13 @@ When(/^Enter "(.*?)" as minimum$/, { timeout: 2 * 105000000 }, async (MinAmt:num
     await browser.executeScript(`document.querySelectorAll('${search.gobtn}')[0].click()`).catch((err: Error) => { throw new Error(`Unable to click: [${search.gobtn}]`); });
     console.log("CLICKED");
     await browser.sleep(5000)
-
-
-
 })
+
 Then(/^Check if price of product is above 1000$/, { timeout: 2 * 105000000 }, async () => {
    await search.present(search.sortby)
+   await search.clickAble(search.sortby)
+
+   await browser.executeScript(`arguments[0].scrollIntoView({block: "nearest"});`, search.sortby.getWebElement());
     let lowtoHighname= await search.sortbyclick(search.lowtohigh)
    console.log("L2H", lowtoHighname);
    await browser.sleep(2000)
