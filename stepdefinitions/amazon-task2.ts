@@ -6,25 +6,15 @@ const { When, Then } = require("cucumber");
 const chai = require("chai").use(require("chai-as-promised"));
 const expect = chai.expect;
 var assert = require('assert')
-// const asserts = chai.asserts;
 var should = require('chai').should()
 const search: SearchPageObject = new SearchPageObject();
-
-//     async function sortbyclick(sortedItem:ElementFinder){
-//         await search.sortby.click()
-//         console.log("sort by btn clicked");
-//         await browser.sleep(3000)
-//         await browser.executeScript('arguments[0].click()', sortedItem);
-//         let sortName=await search.sortedText.getText()
-//         console.log("SortName",sortName);
-//         return sortName
-// }   
 
 When(/^I click on Japan$/, { timeout: 2 * 105000 }, async () => {
     await search.scroll(search.japan)
     await search.present(search.japan)
     await search.japan.click()
     console.log("scrolled to Japan");
+    await search.present(element(by.id("nav-logo")).element(by.id("nav-logo-sprites")).element(by.css("span[class='nav-logo-locale']")))
     let countrydomain= await element(by.id("nav-logo")).element(by.id("nav-logo-sprites")).element(by.css("span[class='nav-logo-locale']")).getText()
      console.log("Country",countrydomain);
      expect(countrydomain).to.have.string('.co.jp');
@@ -52,33 +42,15 @@ When(/^I click on Japan$/, { timeout: 2 * 105000 }, async () => {
    let lowtoHighname= await search.sortbyclick(search.lowtohigh)
    console.log("L2H", lowtoHighname);
    expect(lowtoHighname).to.have.string('Price: Low to High');
-    // await search.sortby.click()
-    // console.log("sort by btn clicked");
-    // await browser.sleep(3000)
-    // await browser.sleep(3000)
-    // await browser.executeScript('arguments[0].click()', search.lowtohigh);
-    // let sortName1=await search.sortedText.getText()
-    //  console.log("SortName",sortName1);
-    // expect(sortName1.trim()).to.have.string('Price: Low to High');
-        // expect(sortName1.trim()).to.have.string('Price: Low to High');
-    
-    console.log("same text");
+          console.log("same text");
     await browser.sleep(2000)
 //--------------------------------------
-// await search.present(search.hightolow)
 
-// let hightoLowname= await sortbyclick(search.hightolow)
-//  console.log("h2L", hightoLowname);
-//  await browser.sleep(2000)
-// await expect(hightoLowname).to.have.string('Price: High to Low');
 
     await search.sortby.click()
     await browser.sleep(2000)
     console.log("h2L click");
-    // await search.present(search.hightolow)
-    // await search.hightolow.click()
-
-    await browser.executeScript('arguments[0].click()', search.hightolow);
+     await browser.executeScript('arguments[0].click()', search.hightolow);
 
     console.log("h2L clicked");
         await browser.sleep(3000)
@@ -125,7 +97,7 @@ Then(/^Check all are Apple products$/, { timeout: 2 * 105000000 }, async () => {
 //     browser.sleep(2000)
 //     expect(NAme).to.have.string("Apple")
 //   }
-let checkbxname=await(element(by.css('span[class="a-size-base-plus a-color-base a-text-normal"]'))).getAttribute('innerText')
+let checkbxname=await(element.all(by.css('span[class="a-size-base-plus a-color-base a-text-normal"]')).get(0)).getAttribute('innerText')
 console.log("chkbxname",checkbxname);
 expect(checkbxname).to.have.string("Apple")
 console.log("Product is of Apple brand");
@@ -133,11 +105,7 @@ console.log("Product is of Apple brand");
     
 })
 Then(/^Check if customer review is 4 star and up$/, { timeout: 2 * 105000000 }, async () => {
-    // await search.present(element(by.xpath("//*[@id='p_72/1318476031']/span/a/section")))
-    // await search.scroll(element(by.xpath("//*[@id='p_72/1318476031']/span/a/section")))
-    // await element(by.xpath("//*[@id='p_72/1318476031']/span/a/section")).click()
-    // browser.actions(element(by.xpath("//*[@id='p_72/1318476031']/span/a/section"))).mouseMove().click().perform();
-    const urlbefore=await browser.getCurrentUrl()
+     const urlbefore=await browser.getCurrentUrl()
     await search.scroll(search.starRating);
     await browser.executeScript(`document.querySelectorAll('${search.starRatingI}')[0].click()`).catch((err: Error) => { throw new Error(`Unable to click: [${search.starRating}]`); });
 
@@ -151,10 +119,8 @@ console.log("PRESENT& SCORLLEd");
 
 for(let i=2;i<= 20;i++){
    let sponsered= await element(by.css(`div[cel_widget_id="MAIN-SEARCH_RESULTS-${i}"]`)).element(by.css("div[class='a-row a-spacing-micro']")).isPresent()
-   
-   console.log("SPONSEred",sponsered);
-   
-   if(sponsered){
+      console.log("SPONSEred",sponsered);
+      if(sponsered){
     console.log("IGnore SPOnsorde");
     
     continue
@@ -168,32 +134,7 @@ for(let i=2;i<= 20;i++){
 }
 console.log("4& UPclicked");
 await browser.sleep(5000)
-  
-  
-    // await search.scroll(element(by.css("section[aria-label='4 Stars & Up']")))
-   
-//    await element(by.id("p_72/1318476031")).click()
-//    await browser.sleep(5000)
-    // await element(by.id("p_72/1318476031")).element(by.css("section[aria-label='4 Stars & Up']")).click()
-    // await browser.executeScript('arguments[0].click()', element(by.css("div[id='reviewsRefinements']")).element(by.id("p_72/1318476031")));
-    // await element(by.css("div[id='reviewsRefinements']")).element(by.id("p_72/1318476031")).element(by.css("i[class='a-icon a-icon-star-medium a-star-medium-4']")).click()
-    // await search.present(await element(by.css("div[id='reviewsRefinements']")).element(by.id("p_72/1318476031")).element(by.css("i[class='a-icon a-icon-star-medium a-star-medium-4']")))
-
-// await element(by.css("div[id='reviewsRefinements']")).element(by.id("p_72/1318476031")).element(by.css("i[class='a-icon a-icon-star-medium a-star-medium-4']")).click()
-// await element(by.css("div[id='reviewsRefinements']")).element(by.id("p_72/1318476031")).element(by.css("i[class='a-icon a-icon-star-medium a-star-medium-4']")).click()
-
-//await element(by.css("div[id='reviewsRefinements']")).element(by.id("p_72/1318476031")).element(by.css("a[href='/s?k=apple&dc&crid=B46J9A88ZVC9&qid=1657675234&rnid=1318475031&sprefix=appl%2Caps%2C268&ref=sr_nr_p_72_1&ds=v1%3APZNjg3iCh1pRAu%2FolazhwyG5IwYQiJ%2FOqjkz1I56Z4c']")).click()
-// await search.present(element(by.xpath("//*[@id='p_72/1318476031']")).element(by.css("section[aria-label='4 Stars & Up']")))
-// await browser.executeScript('arguments[0].click()', element(by.xpath("//*[@id='p_72/1318476031']")).element(by.css("section[aria-label='4 Stars & Up']")));
-// let word=await element(by.xpath("//*[@id='p_72/1318476031']")).element(by.css("section[aria-label='4 Stars & Up']")).getAttribute('innerText')
-
-// await element(by.xpath('//*[@id="p_72/1318476031"]/span/a')).click()
-// let word=await element(by.xpath('//*[@id="p_72/1318476031"]/span/a/section/i/span')).getText()
-// let word= await element(by.css("div[id='reviewsRefinements']")).element(by.id("p_72/1318476031")).element(by.css("i[class='a-icon a-icon-star-medium a-star-medium-4']")).getAttribute('innerText')
-    // let word= await element(by.id("p_72/1318476031")).element(by.css("i[class='a-icon a-icon-star-medium a-star-medium-4']")).getAttribute('innerText')
-
-
-        
+          
 })
 When(/^Enter "(.*?)" as minimum$/, { timeout: 2 * 105000000 }, async (MinAmt:number) => {
     console.log("Amt", MinAmt);
@@ -203,8 +144,7 @@ When(/^Enter "(.*?)" as minimum$/, { timeout: 2 * 105000000 }, async (MinAmt:num
     await browser.sleep(5000)
     console.log("Amt", MinAmt);
     console.log("NOT CLicked");
-    // await search.present(search.gobtn)
-    // await(search.gobtn).click()
+ 
     await browser.executeScript(`document.querySelectorAll('${search.gobtn}')[0].click()`).catch((err: Error) => { throw new Error(`Unable to click: [${search.gobtn}]`); });
     console.log("CLICKED");
     await browser.sleep(5000)

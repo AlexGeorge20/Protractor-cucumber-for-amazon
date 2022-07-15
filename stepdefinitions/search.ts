@@ -18,6 +18,7 @@ When("I click on pincode", { timeout: 2 * 105000 }, async () => {
 Then(/^I entered pin "(.*?)"$/, { timeout: 3 * 105000 }, async (pin: string) => {
 
   await search.present(search.searchPin)
+  await search.scroll(search.searchPin)
   await search.searchPin.sendKeys(pin);
   await browser.sleep(2000);
 
@@ -28,7 +29,6 @@ Then(/^I entered pin "(.*?)"$/, { timeout: 3 * 105000 }, async (pin: string) => 
   console.log("pin updated");
 
   await browser.sleep(4000);
-  //  // let code =  (await search.updatedpin.getText()).split(" ")[1].trim();
   let code = (await search.updatedpin.getText()).trim()
   console.log("CoDE", await search.updatedpin.getText());
 
@@ -37,14 +37,10 @@ Then(/^I entered pin "(.*?)"$/, { timeout: 3 * 105000 }, async (pin: string) => 
   console.log("updatepin present")
   console.log("CODE/Pin", code, pin);
   expect(code.trim()).to.have.string(pin.trim());
-  //  await browser.sleep(3000);
-  //  console.log("to print code ")
-  // console.log("CODE/Pin", code, pin);
-  // expect(code.trim()).to.have.string(pin.trim());
+
 
 });
 When('I click on signIn to enter email {string} and password {string}', { timeout: 2 * 105000 }, async (email: string, pwd: string) => {
-  // When(/^I click on signIn to enter email "(.*?)" and password "(.*?)"$/, async (email:string,pwd:string) => {
 
   await browser.executeScript(`arguments[0].scrollIntoView();`, search.hellosignin.getWebElement());
 
@@ -62,7 +58,7 @@ When('I click on signIn to enter email {string} and password {string}', { timeou
 Then(/^I log into my account$/, { timeout: 3 * 150000 }, async () => {
   await search.signinbtn.click();
   await browser.sleep(3000);
-  await search.deleteItem();
+    await search.deleteItem();
   await browser.sleep(2000);
 
 });
@@ -92,9 +88,6 @@ When(/^Go to fourth page$/, { timeout: 2 * 105000 }, async () => {
 Then(/^Click first item in cart$/, { timeout: 2 * 105000 }, async () => {
 
   await search.present(search.firstiteminpg)
-
-  // await browser.executeScript(`arguments[0].scrollIntoView();`, search.firstiteminpg.getWebElement());
-
   await search.firstiteminpg.click();
 
   var winHandles = browser.getAllWindowHandles();
@@ -149,8 +142,7 @@ Then(/^Add to cart and check$/, { timeout: 3 * 105000 }, async () => {
   console.log("first item in cart visible");
 
   let itemname = await search.itemNameincart.getAttribute('textContent')
-  // let itemname=await search.itemNameincart.getText()
-  // let itemname=await search.itemNameincart.getAttribute('innerText')
+ 
 
   console.log("PRdct text", itemname);
   console.log("PRDT title", pdtitle);

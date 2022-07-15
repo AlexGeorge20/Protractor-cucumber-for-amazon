@@ -45,12 +45,14 @@ export class SearchPageObject {
     careersearchbox: ElementFinder;
     careersearchbtn: ElementFinder;
     sftdevbtn: ElementFinder;
-    egypt: ElementFinder;
+    austria: ElementFinder;
     jobtitleblocks: ElementFinder;
     openingCount: any;
     languageBox: ElementFinder;
     malayalam: ElementFinder;
     savelanguagebtn: ElementFinder;
+    yourWishlist: ElementFinder;
+    languageEnglish: ElementFinder;
 
 
     constructor() {
@@ -70,30 +72,25 @@ export class SearchPageObject {
         this.firstiteminpg = element(by.css("div[cel_widget_id='MAIN-SEARCH_RESULTS-2']")).element(by.css("a[class='a-link-normal s-underline-text s-underline-link-text s-link-style a-text-normal']"))
         this.addtocart = element(by.id("add-to-cart-button"))
         this.productTitle = element(by.id("productTitle"))
-        // this.sidesheetclosebtn=element(by.css("div[class='a-section a-spacing-none a-padding-base attach-primary-atc-confirm-box']")).element(by.id("attach-close_sideSheet-link"))
-        this.sidesheetclosebtn = element(by.id("attach-close_sideSheet-link"))
+        this.sidesheetclosebtn = element.all(by.id("attach-close_sideSheet-link")).get(0)
 
         this.cartCount = element(by.id("nav-cart-count-container")).element(by.id("nav-cart-count"))
         this.cartPage = element(by.id("nav-cart"))
-        this.itemNameincart = element(by.css("div[data-item-index='1']")).element(by.css("li:nth-child(1)")).element(by.css("span[class='a-truncate a-size-medium']")).element(by.css("span[class='a-truncate-full a-offscreen']"))
+        this.itemNameincart = element.all(by.css("div[data-item-index='1']")).get(0).element(by.css("li:nth-child(1)")).element(by.css("span[class='a-truncate a-size-medium']")).element(by.css("span[class='a-truncate-full a-offscreen']"))
         this.activeItem = element(by.css("div[data-name='Active Items']"))
         this.delbtn = element(by.css("input[data-action='delete']"))
-        // this.japan=element(by.css("div[class='navFooterLine navFooterLinkLine navFooterPadItemLine']")).element(by.css("a[href='https://www.amazon.co.jp/ref=footer_jp']"))
         this.japan=element(by.linkText("Japan"))
 
-    this.sortby=element(by.css("span[class='a-button-inner']"))
-    this.lowtohigh=element(by.css("div[class='a-popover-wrapper']")).element(by.id("s-result-sort-select_1"))
-    this.sortedText=element(by.css("span[class='a-button-inner']")).element(by.css("span[class='a-dropdown-prompt']"))
-    this.hightolow=element(by.css("div[class='a-popover-wrapper']")).element(by.id("s-result-sort-select_2"))
-    this.avgreview=element(by.css("div[class='a-popover-wrapper']")).element(by.id("s-result-sort-select_3"))
-    this.newArrival=element(by.css("div[class='a-popover-wrapper']")).element(by.id("s-result-sort-select_4"))
+    this.sortby=element(by.css("span[aria-label='Sort by:']")).element(by.css("span[class='a-button-inner']"))
+    this.lowtohigh=element.all(by.xpath("//*[@id='s-result-sort-select_1']")).get(0)
+    this.sortedText=element(by.css("span[aria-label='Sort by:']")).element(by.css("span[class='a-button-inner']")).element(by.css("span[class='a-dropdown-prompt']"))
+    this.hightolow=element.all(by.xpath("//*[@id='s-result-sort-select_2']")).get(0)
+    this.avgreview=element.all(by.xpath("//*[@id='s-result-sort-select_3']")).get(0)
+   this.newArrival=element.all(by.xpath("//*[@id='s-result-sort-select_4']")).get(0)
 this.applebrand=element(by.css("div[id='brandsRefinements']")).element(by.id("p_89/Apple")).element(by.css("div[class='a-checkbox a-checkbox-fancy s-navigation-checkbox aok-float-left']"))
-// this.minbox=element(by.id("low-price"))
-// this.minbox=element(by.xpath('//*[@id="low-price"]'))
+
 this.minbox=element(by.css("input[id='low-price']"))
-// this.gobtn=element(by.xpath("//*[@id='a-autoid-1']/span/input"))
-// this.gobtn=element(by.css("input[class='a-button-input']"))
-// this.gobtn=element(by.css("input[aria-labelledby='a-autoid-1-announce']"))
+
 this.priceofitem1= element(by.xpath("//*[@id='search']/div[1]/div[1]/div/span[3]/div[2]/div[3]/div/div/div/div/div/div[2]/div/div/div[3]/div[1]/div/div[1]/div/a/span/span[2]/span[2]"))
 this.starRating = element(by.className('a-icon a-icon-star-medium a-star-medium-4'))
 this.starRatingI ='i[class="a-icon a-icon-star-medium a-star-medium-4"]';
@@ -101,14 +98,15 @@ this.gobtn='input[aria-labelledby="a-autoid-1-announce"]'
 this.careers=element(by.linkText("Careers"))
 this.careersearchbox=element.all(by.css("input[placeholder='Search for jobs']")).get(1)
 this.careersearchbtn=element(by.id("search-button"))
-this.sftdevbtn=element(by.css("button[data-label='Software Development']"))
-this.egypt=element(by.css("button[data-label='Egypt']"))
+this.sftdevbtn=element.all(by.css("button[data-label='Software Development']")).get(0)
+this.austria=element.all(by.css("button[data-label='Austria']")).get(0)
 this.jobtitleblocks=element(by.css("div[class='job-tile']"))
 this.openingCount=element.all(by.css("div[class='job-tile']"))
 this.languageBox=element(by.id('icp-touch-link-language'))
 this.malayalam=element(by.xpath("//*[@id='icp-language-settings']/div[7]/div/label/i"))
 this.savelanguagebtn=element(by.css("input[aria-labelledby='icp-save-button-announce']"))
-
+this.yourWishlist=element(by.linkText('Your Wish List'))
+this.languageEnglish=element(by.xpath("//*[@id='icp-language-settings']/div[2]/div/label/i"))
 }
 
     present = async (toCheck: ElementFinder, checkvisiblity: boolean = true): Promise<void> => {
@@ -145,7 +143,6 @@ this.savelanguagebtn=element(by.css("input[aria-labelledby='icp-save-button-anno
         await browser.executeScript(`arguments[0].scrollIntoView();`, eleItem.getWebElement());
 
     }
-    // async function sortbyclick(sortedItem:ElementFinder){
      sortbyclick=async (sortedItem:ElementFinder):Promise<string>=>{
 
         await this.sortby.click()
@@ -159,5 +156,13 @@ this.savelanguagebtn=element(by.css("input[aria-labelledby='icp-save-button-anno
      clickAble=async (elemtocheck:ElementFinder):Promise<void>=>{
              var EC = protractor.ExpectedConditions;
              browser.wait(EC.elementToBeClickable(elemtocheck), 10000);
+}
+ selectLanguage=async (LANGUAGE:ElementFinder):Promise<void>=> {
+    await this.languageBox.click()
+    await browser.sleep(3000)
+    await LANGUAGE.click()
+    await browser.sleep(3000)
+    await this.savelanguagebtn.click()
+    await browser.sleep(3000)
 }
 }
