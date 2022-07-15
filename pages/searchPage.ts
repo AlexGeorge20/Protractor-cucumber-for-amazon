@@ -42,17 +42,17 @@ export class SearchPageObject {
      public starRating: ElementFinder;
      public starRatingI: string;
     public careers: ElementFinder;
-    careersearchbox: ElementFinder;
-    careersearchbtn: ElementFinder;
-    sftdevbtn: ElementFinder;
-    austria: ElementFinder;
-    jobtitleblocks: ElementFinder;
-    openingCount: any;
-    languageBox: ElementFinder;
-    malayalam: ElementFinder;
-    savelanguagebtn: ElementFinder;
-    yourWishlist: ElementFinder;
-    languageEnglish: ElementFinder;
+    public careersearchbox: ElementFinder;
+    public careersearchbtn: ElementFinder;
+    public sftdevbtn: ElementFinder;
+    public austria: ElementFinder;
+    public jobtitleblocks: ElementFinder;
+    public openingCount: any;
+    public languageBox: ElementFinder;
+    public malayalam: ElementFinder;
+    public savelanguagebtn: ElementFinder;
+    public yourWishlist: ElementFinder;
+    public languageEnglish: ElementFinder;
 
 
     constructor() {
@@ -157,12 +157,12 @@ this.languageEnglish=element(by.xpath("//*[@id='icp-language-settings']/div[2]/d
              var EC = protractor.ExpectedConditions;
              browser.wait(EC.elementToBeClickable(elemtocheck), 10000);
 }
- selectLanguage=async (LANGUAGE:ElementFinder):Promise<void>=> {
-    await this.languageBox.click()
-    await browser.sleep(3000)
-    await LANGUAGE.click()
-    await browser.sleep(3000)
-    await this.savelanguagebtn.click()
-    await browser.sleep(3000)
+    selectLanguage=async (LANGUAGE:ElementFinder):Promise<void>=> {
+        await this.languageBox.click()
+        await browser.sleep(3000)
+        await LANGUAGE.click()
+        await browser.sleep(3000)
+        await this.savelanguagebtn.click()
+        await browser.sleep(3000)
 }
 }

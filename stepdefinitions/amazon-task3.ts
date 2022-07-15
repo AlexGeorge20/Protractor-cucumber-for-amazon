@@ -45,9 +45,16 @@ Then(/^Check openings on page is below 11$/, { timeout: 2 * 1050000 }, async () 
 })
 
 When(/^I select Malayalam as language$/, { timeout: 2 * 1050000 }, async () => {
-    await search.selectLanguage(search.malayalam)
+//   await search.present(search.malayalam)
+    // await search.selectLanguage(search.malayalam)
+    await search.languageBox.click()
     await browser.sleep(3000)
-
+    await search.malayalam.click()
+    await browser.sleep(3000)
+    await search.savelanguagebtn.click()
+    await browser.sleep(3000)
+   
+    
 
 })
 Then(/^I check if language is Malayalam$/, { timeout: 2 * 1050000 }, async () => {
@@ -66,36 +73,5 @@ Then(/^Select English as language$/, { timeout: 2 * 1050000 }, async () => {
     await browser.sleep(3000)
    
 })
-When(/^I click on Your Wish List$/, { timeout: 2 * 1050000 }, async () => {
-    // await search.hellosignin.click();
-   await browser.actions().mouseMove(search.hellosignin).perform()
-    await browser.sleep(2000)
-    console.log("mouse moved to signIn btn");
 
-    await search.yourWishlist.click()
-    await browser.sleep(2000)
-
-
-})
-Then(/^Check count of items in wishlist page1$/, { timeout: 2 * 1050000 }, async () => {
-    wishlistcount= await element.all(by.css('li[class="a-spacing-none g-item-sortable"]')).count()
-console.log("WISHListcount",wishlistcount);
-
-})
-Then(/^Add all wishlist items to cart and check if cart count is same$/, { timeout: 2 * 1050000 }, async () => {
-    await browser.sleep(3000)
-    for(let i= 2 ;i <= wishlistcount+1; i++){
-        await element(by.xpath(`//*[@id='g-items']/li[${i}]`)).click()
-
-        await browser.sleep(3000)
-        console.log("ADDing item to cart",i-1);
-        }
-        await browser.sleep(3000)
-        await  browser.get("https://www.amazon.in")
-        let itemno = parseInt((await search.cartCount.getText()), 10)
-        console.log("Items IN CARt", itemno, typeof itemno);
-        console.log("WL/item count",wishlistcount,itemno);
-
-        expect(wishlistcount).to.equal(itemno)
         
-})
