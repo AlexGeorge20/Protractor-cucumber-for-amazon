@@ -67,7 +67,7 @@ When(/^I click on Japan$/, { timeout: 2 * 105000 }, async () => {
 //--------------------------------------
 // await search.present(search.hightolow)
 
-// let hightoLowname= await sortbyclick(search.hightolow)
+// let hightoLowname= await search.sortbyclick(search.hightolow)
 //  console.log("h2L", hightoLowname);
 //  await browser.sleep(2000)
 // await expect(hightoLowname).to.have.string('Price: High to Low');
@@ -75,17 +75,21 @@ When(/^I click on Japan$/, { timeout: 2 * 105000 }, async () => {
     await search.sortby.click()
     await browser.sleep(2000)
     console.log("h2L click");
-    // await search.present(search.hightolow)
-    // await search.hightolow.click()
-
+    
     await browser.executeScript('arguments[0].click()', search.hightolow);
-
     console.log("h2L clicked");
         await browser.sleep(3000)
     let sortName2=await search.sortedText.getText()
      console.log("SortName2",sortName2);
     expect(sortName2.trim()).to.have.string('Price: High to Low');
 //---------------------------------------------------
+// let custReview= await search.sortbyclick(search.avgreview)
+//  console.log("CustReview", custReview);
+//  await browser.sleep(2000)
+// await expect(custReview).to.have.string('Avg. Customer Review');
+
+
+
 await search.sortby.click()
     await browser.sleep(2000)
     console.log("review click");

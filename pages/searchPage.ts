@@ -126,7 +126,8 @@ this.gobtn='input[aria-labelledby="a-autoid-1-announce"]'
     }
     // async function sortbyclick(sortedItem:ElementFinder){
      sortbyclick=async (sortedItem:ElementFinder):Promise<string>=>{
-
+        await this.clickAble(sortedItem)
+        
         await this.sortby.click()
         console.log("sort by btn clicked");
         await browser.sleep(3000)
