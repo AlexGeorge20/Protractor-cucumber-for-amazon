@@ -57,6 +57,5 @@ export const capabilities = {
          }else{
             return capabilities["chrome"];
         //    return  capabilities.chrome
-            // config.capabilities = capabilities['chrome']
          }
      }

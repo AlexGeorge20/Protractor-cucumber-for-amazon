@@ -23,19 +23,19 @@ Then(/^I entered pin "(.*?)"$/, { timeout: 3 * 105000 }, async (pin: string) => 
   await browser.sleep(2000);
 
   await browser.sleep(3000);
-  await search.scroll(search.zipapply)
-  await search.zipapply.click();
+  await search.scroll(search.zipApply)
+  await search.zipApply.click();
   await search.present(search.updatedpin)
   console.log("pin updated");
 
   await browser.sleep(4000);
   let code = (await search.updatedpin.getText()).trim()
-  console.log("CoDE", await search.updatedpin.getText());
+  // console.log("CoDE", await search.updatedpin.getText());
 
   await browser.sleep(4000);
   await search.present(search.updatedpin)
-  console.log("updatepin present")
-  console.log("CODE/Pin", code, pin);
+  // console.log("updatepin present")
+  // console.log("CODE/Pin", code, pin);
   expect(code.trim()).to.have.string(pin.trim());
 
 
@@ -45,12 +45,12 @@ When('I click on signIn to enter email {string} and password {string}', { timeou
   await browser.executeScript(`arguments[0].scrollIntoView();`, search.hellosignin.getWebElement());
 
   await search.hellosignin.click();
-  await search.present(search.inputemail)
-  await search.inputemail.sendKeys(email);
+  await search.present(search.inputEmail)
+  await search.inputEmail.sendKeys(email);
 
-  await browser.executeScript(`arguments[0].scrollIntoView();`, search.clickcontinue.getWebElement());
+  await browser.executeScript(`arguments[0].scrollIntoView();`, search.clickContinue.getWebElement());
 
-  await search.clickcontinue.click();
+  await search.clickContinue.click();
   await search.present(search.inputpwd)
   await search.inputpwd.sendKeys(pwd);
 });
@@ -63,26 +63,26 @@ Then(/^I log into my account$/, { timeout: 3 * 150000 }, async () => {
 
 });
 When(/^I enter "(.*?)" in searchbar$/, { timeout: 2 * 105000 }, async (item: string) => {
-  await search.present(search.searchbox)
-  await search.searchbox.sendKeys(item);
+  await search.present(search.searchBox)
+  await search.searchBox.sendKeys(item);
   await browser.executeScript(`arguments[0].scrollIntoView();`, search.submitSearch.getWebElement());
   await search.submitSearch.click();
   await browser.sleep(3000);
 })
 
 When(/^Go to fourth page$/, { timeout: 2 * 105000 }, async () => {
-  let count = await search.pagecount.getText();
-  console.log("COUNT", count[0]);
+  let count = await search.pageCount.getText();
+  // console.log("COUNT", count[0]);
   let counter: number = +count;
-  console.log("TotalCOUNTER", counter, typeof counter);
+  // console.log("TotalCOUNTER", counter, typeof counter);
   let totalPageCount = counter;
   let pageToGo = 3;
   let j = totalPageCount > pageToGo ? pageToGo : totalPageCount;
 
   for (let i = 0; i < j; i++) {
-    console.log("inside loop");
-    await search.present(search.nextbtn)
-    await search.nextbtn.click();
+    // console.log("inside loop");
+    await search.present(search.nextButton)
+    await search.nextButton.click();
   }
 });
 Then(/^Click first item in cart$/, { timeout: 2 * 105000 }, async () => {
@@ -99,7 +99,7 @@ Then(/^Click first item in cart$/, { timeout: 2 * 105000 }, async () => {
   });
   await search.present(search.addtocart)
   pdtitle = await element(by.id("productTitle")).getText();
-  console.log("PRDT title", pdtitle);
+  // console.log("PRDT title", pdtitle);
 
   await browser.sleep(3000)
 })
@@ -112,7 +112,7 @@ Then(/^Add to cart and check$/, { timeout: 3 * 105000 }, async () => {
   await search.addtocart.click();
 
   await browser.driver.switchTo().activeElement();
-  console.log("going to close btn");
+  // console.log("going to close btn");
   await browser.sleep(2000);
   await search.present(search.sidesheetclosebtn)
 
@@ -135,17 +135,17 @@ Then(/^Add to cart and check$/, { timeout: 3 * 105000 }, async () => {
   await browser.executeScript(`arguments[0].scrollIntoView();`, search.cartPage.getWebElement());
 
   await search.cartPage.click();
-  console.log("checking items in cart");
+  // console.log("checking items in cart");
 
   await browser.sleep(3000);
   //  await present(search.itemNameincart)
-  console.log("first item in cart visible");
+  // console.log("first item in cart visible");
 
   let itemname = await search.itemNameincart.getAttribute('textContent')
  
 
-  console.log("PRdct text", itemname);
-  console.log("PRDT title", pdtitle);
+  // console.log("PRdct text", itemname);
+  // console.log("PRDT title", pdtitle);
   expect(pdtitle).to.have.string(itemname)
   await browser.sleep(2000);
 

@@ -11,11 +11,11 @@ const yargs = require('yargs/yargs')
 const { hideBin } = require('yargs/helpers')
 const argv = yargs(hideBin(process.argv)).argv
 const browserName=argv.browserSel
-console.log("browserNameconfg YARG",browserName);
+// console.log("browserNameconfg YARG",browserName);
 const domain=argv.domain
-console.log("siteDomain YARG",domain);
+// console.log("siteDomain YARG",domain);
 
-console.log("CApaBILIties", capabilities.chrome);
+// console.log("CApaBILIties", capabilities.chrome);
 
 
 export const config: Config = {

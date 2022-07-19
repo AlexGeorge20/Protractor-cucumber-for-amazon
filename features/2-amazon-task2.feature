@@ -24,5 +24,5 @@ Feature: To search product in amazon.in Cucumber
           When Enter "apple" in searchbar
           When Enter "1000" as minimum 
           Then Check if price of product is above 1000
-
+    
           
