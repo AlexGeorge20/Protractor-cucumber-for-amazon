@@ -1,10 +1,8 @@
 const yargs = require('yargs/yargs')
 const { hideBin } = require('yargs/helpers')
 const argv = yargs(hideBin(process.argv)).argv
-const browserName=argv.browser
+const browserName=argv.browserSel
 console.log("browserNameinCAPABlityYARG",browserName);
-
-
 
 
 export const capabilities = {
@@ -51,17 +49,16 @@ export const capabilities = {
     }
 }
 
-export const browserSelector=()=>{
+    export const browserSelector=()=>{
   
         if(browserName=="chrome" || browserName=="firefox"){
-            // return capabilities[browserName];
-            // console.log("CAPA IF",capabilities.chrome);
+            return capabilities[browserName]
+            // console.log("CAPA IF",capabilities['chrome']);
             
          }else{
             return capabilities["chrome"];
         //    return  capabilities.chrome
             // config.capabilities = capabilities['chrome']
             // console.log("CAPA Else",capabilities.firefox);
-        
-        }
+         }
      }

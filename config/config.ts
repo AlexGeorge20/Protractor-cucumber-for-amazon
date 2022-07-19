@@ -1,20 +1,20 @@
 import * as path from "path";
 import { browser, Config } from "protractor";
 import { Reporter } from "../support/reporter";
-import { capabilities,browserSelector } from "./capabilities";
-// import { browserSelector } from "./capabilities";
+import { capabilities } from "./capabilities";
+import { browserSelector } from "./capabilities";
 
 const jsonReports = process.cwd() + "/reports/json";
 
 const yargs = require('yargs/yargs')
 const { hideBin } = require('yargs/helpers')
 const argv = yargs(hideBin(process.argv)).argv
-const browserName=argv.browser
+const browserName=argv.browserSel
 console.log("browserNameconfg YARG",browserName);
 const domain=argv.domain
 console.log("siteDomain YARG",domain);
 
-console.log("CApaBILIties",capabilities.chrome);
+console.log("CApaBILIties", capabilities.chrome);
 
 
 export const config: Config = {
@@ -61,8 +61,8 @@ export const config: Config = {
         Reporter.createHTMLReport();
     },
 };
+// console.log("BROWSERSELECTOR", browserSelector());
 
-config.capabilities = browserSelector;
+config.capabilities = browserSelector();
 
-
-// npm run test -- --browser=chrome --domain=in
+// npm run test -- --browserSel=chrome --domain=in
