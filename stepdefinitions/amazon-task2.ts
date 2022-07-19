@@ -107,6 +107,7 @@ console.log("Product is of Apple brand");
 Then(/^Check if customer review is 4 star and up$/, { timeout: 2 * 105000000 }, async () => {
      const urlbefore=await browser.getCurrentUrl()
     await search.scroll(search.starRating);
+    await browser.sleep(3000)
     await browser.executeScript(`document.querySelectorAll('${search.starRatingI}')[0].click()`).catch((err: Error) => { throw new Error(`Unable to click: [${search.starRating}]`); });
 
 

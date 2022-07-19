@@ -3,6 +3,7 @@ import { browser, Config } from "protractor";
 import { Reporter } from "../support/reporter";
 import { capabilities } from "./capabilities";
 import { browserSelector } from "./capabilities";
+import { domainSelector } from "./domain";
 
 const jsonReports = process.cwd() + "/reports/json";
 
@@ -23,13 +24,15 @@ export const config: Config = {
 
     SELENIUM_PROMISE_MANAGER: false,
 
-    baseUrl: `https://www.amazon.${domain}`,
+    baseUrl: domainSelector(domain),
 
-    capabilities:{},
+    capabilities: browserSelector(),
         // //capabilities :capabilities.firefox,
 
     // capabilities: {
         // browserName: `${browserName}`,
+                // browserName: 'chrome',
+
         // chromeOptions: {
         //     args: [ "--headless", "--disable-gpu", "--window-size=800,600" ]
         //   }
@@ -61,8 +64,6 @@ export const config: Config = {
         Reporter.createHTMLReport();
     },
 };
-// console.log("BROWSERSELECTOR", browserSelector());
 
-config.capabilities = browserSelector();
 
 // npm run test -- --browserSel=chrome --domain=in

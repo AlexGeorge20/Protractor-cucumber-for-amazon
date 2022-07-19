@@ -53,9 +53,7 @@ When(/^I select Malayalam as language$/, { timeout: 2 * 1050000 }, async () => {
     await browser.sleep(3000)
     await search.savelanguagebtn.click()
     await browser.sleep(3000)
-   
     
-
 })
 Then(/^I check if language is Malayalam$/, { timeout: 2 * 1050000 }, async () => {
    await search.scroll(search.languageBox)

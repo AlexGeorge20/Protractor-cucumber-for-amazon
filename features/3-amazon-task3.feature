@@ -7,10 +7,10 @@ Feature: To search product in amazon.in Cucumber
           When I click on Careers
           Then Check openings on page is below 11
 
-#  @CucumberScenario
-#      Scenario: Selecting language
-#      When I select Malayalam as language
-#      Then I check if language is Malayalam
-#      And Select English as language
+ @CucumberScenario
+     Scenario: Selecting language
+     When I select Malayalam as language
+     Then I check if language is Malayalam
+     And Select English as language
 
      

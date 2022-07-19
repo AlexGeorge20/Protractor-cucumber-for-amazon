@@ -53,12 +53,10 @@ export const capabilities = {
   
         if(browserName=="chrome" || browserName=="firefox"){
             return capabilities[browserName]
-            // console.log("CAPA IF",capabilities['chrome']);
             
          }else{
             return capabilities["chrome"];
         //    return  capabilities.chrome
             // config.capabilities = capabilities['chrome']
-            // console.log("CAPA Else",capabilities.firefox);
          }
      }

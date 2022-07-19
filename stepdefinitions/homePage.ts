@@ -6,7 +6,7 @@ const expect = chai.expect;
 
 const search: SearchPageObject = new SearchPageObject();
 
-Given(/^I am on "(.*?)" search page$/, async (text) => {
+Given(/^I am on "(.*?)" search page$/,{ timeout: 2 * 1050000 }, async (text:string) => {
   await  browser.get("https://www.amazon.in")
     if (text === "amazon") {
      console.log("TITLE", await browser.getTitle());
